@@ -19,23 +19,24 @@ start.addEventListener("click", function(){
     const valueDif = difficolta.value 
     // 2.1 recupero la const che mi indica quante celle devo creare
     const totalCell = numCell(valueDif)
+    console.log(totalCell)
     
     // 3 stampare la griglia in base al livello scelto
-    
-
+    gridCreate(totalCell)
+    cell.addEventListener("click", cellClick)
 })
 
 
 function numCell(valueDif){
     let numCellDif
     switch (valueDif){
-        case easy:
+        case "easy":
             numCellDif = 100
             break;
-        case regular:
+        case "regular":
             numCellDif = 81
             break;
-        case hard: 
+        case "hard": 
             numCellDif = 49
             break;
     }
@@ -43,8 +44,29 @@ function numCell(valueDif){
     return numCellDif
 }
 
-function gridCreate(totalCell){
-    for (let i = 0; i < totalCell; i++){
-        containerGrid.innerHTML += `<div class="cell"></div>`
+function gridCreate(num){
+    containerGrid.innerHTML = ""
+
+    const cellForRow = Math.sqrt(num);
+    const dimCell = 100 / cellForRow;
+
+    console.log(num)
+    for (let i = 0; i < num; i++){
+        // const cell =  `<div class="square" style="width: ${dimCell}%; height: ${dimCell}%">${i + 1}</div>`
+        // containerGrid.innerHTML += cell
+        // document.querySelector(".container-grid > div").addEventListener("click", cellClick)
+        const cell = document.createElement("div")
+        cell.classList.add("square")
+        cell.style.width = dimCell + "%"
+        cell.style.height = dimCell + "%"
+        cell.innerHTML = [i + 1]
+        cell.addEventListener("click", cellClick)
+        containerGrid.append(cell)
     }
+    
+}
+
+function cellClick(){
+    this.classList.toggle("active")
+    // document.querySelector(".container-grid > div").classList.toggle("active")
 }

@@ -7,9 +7,18 @@
     width: 600px;
     height: 600px;
     border: 1px solid black;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.active{
+    background-color: blueviolet;
+    color: white;
 }
 
-.cell {
-    width: 20px;
-    height: 20px;
+.square {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
