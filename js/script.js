@@ -52,9 +52,6 @@ function gridCreate(num){
 
     console.log(num)
     for (let i = 0; i < num; i++){
-        // const cell =  `<div class="square" style="width: ${dimCell}%; height: ${dimCell}%">${i + 1}</div>`
-        // containerGrid.innerHTML += cell
-        // document.querySelector(".container-grid > div").addEventListener("click", cellClick)
         const cell = document.createElement("div")
         cell.classList.add("square")
         cell.style.width = dimCell + "%"
@@ -68,5 +65,4 @@ function gridCreate(num){
 
 function cellClick(){
     this.classList.toggle("active")
-    // document.querySelector(".container-grid > div").classList.toggle("active")
 }
